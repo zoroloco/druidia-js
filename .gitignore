@@ -1,3 +1,8 @@
+node_modules
+logs/*
+security/ssl/druidia.crt
+security/ssl/druidia.pem
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
