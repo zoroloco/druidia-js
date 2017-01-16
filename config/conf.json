@@ -1,0 +1,26 @@
+{ "title" : "druidia.net",
+  "hostname" : "druidia.net",
+
+  "port"     : 443,
+  "httpPort" : 80,
+
+  "logger" : {
+    "enabled" : true,
+    "dir"     : "logs"
+  },
+
+  "mySqlServer" : {
+    "host" : "",
+    "port" : ""
+  },
+
+  "mongo" : {
+    "connectionString" : "mongodb://localhost/druidia",
+    "keepAlive" : 300000
+  },
+
+  "messages" : {
+    "notFoundMessage" : "404 Error. Page not found."
+  }
+
+}
