@@ -1,7 +1,9 @@
-node_modules
-logs/*
-security/ssl/druidia.crt
-security/ssl/druidia.pem
+app-server/node_modules
+app-server/logs/*
+app-server/security/ssl/druidia.crt
+app-server/security/ssl/druidia.pem
+
+app-web/node_modules
 
 # Windows image file caches
 Thumbs.db

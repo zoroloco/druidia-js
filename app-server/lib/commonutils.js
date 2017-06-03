@@ -1,8 +1,7 @@
 var pathUtil     = require('path'),
     log          = require(pathUtil.join(__dirname,'../lib/logger.js')),
     cp           = require('child_process'),
-    conf         = require(pathUtil.join(__dirname,'../config/conf.json')),
-    MobileDetect = require('mobile-detect');
+    conf         = require(pathUtil.join(__dirname,'../config/conf.json'));
 
 exports.executeCommand = function(cmd,cb){
 	var child = cp.exec(cmd ,function(error,stdout,stderr){
@@ -18,6 +17,7 @@ exports.executeCommand = function(cmd,cb){
 	});
 }
 
+/*
 exports.isMobile = function(req){
   if(conf.debugMobile === true){
     log.info("Debug mobile mode on. Simulating mobile OS.");
@@ -36,3 +36,4 @@ exports.isMobile = function(req){
    log.info("Mobile OS not detected.");
    return false;
 }
+*/

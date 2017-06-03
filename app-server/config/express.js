@@ -4,7 +4,6 @@ const express        = require('express');
 var   pathUtil       = require('path'),
       bodyParser     = require('body-parser'),
       methodOverride = require('method-override'),
-      vhost          = require('vhost'),
       fs             = require('fs'),
       credentials    = require(pathUtil.join(__dirname,'../security/credentials.js')),
       conf           = require(pathUtil.join(__dirname,'./conf.json')),
@@ -16,7 +15,7 @@ module.exports = function() {
     log.info("Setting default and config values for express app.");
     app.set('port', process.env.PORT || conf.port);
     app.set('httpPort', conf.httpPort);
-    app.set('views',pathUtil.join(__dirname,'../../client/www'));
+    //app.set('views',pathUtil.join(__dirname,'../../client/www'));
     //app.set('view engine', 'jade');
     app.set('title', conf.title);
 
@@ -57,7 +56,7 @@ module.exports = function() {
 
     //setup the static dir to be served
     log.info("Setting static file directory.");
-    app.use(express.static(pathUtil.join(__dirname,'../../client/www')));
+    app.use(express.static(pathUtil.join(__dirname,'../../app-web/public')));
 
     log.info("Defining routing file.");
     require('../routes/routes.js')(app);
