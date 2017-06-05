@@ -1,8 +1,9 @@
 angular.module('index-module', ['ngMaterial']).
-  controller('IndexController',['$log','$location','$window',
-             'CommonService',function($log,$location,$window,commonService) {
+  controller('IndexController',['$log','$location','$window', '$rootScope',
+             'CommonService',function($log,$location,$window,$rootScope,commonService) {
 
     var self = this;
+    $rootScope.question2="Question 2:";
 
     $log.log("Instantiated index controller.");
 

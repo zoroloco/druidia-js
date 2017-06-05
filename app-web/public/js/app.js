@@ -3,4 +3,5 @@ angular.module('druidia-web', ['ngRoute',
                                'route-module',
                                'http-module',
                                'index-module',
-                               'login-module']);
+                               'login-module',
+                               'quiz-module']);

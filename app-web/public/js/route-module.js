@@ -15,8 +15,10 @@ angular.module('route-module', []).
 
         $routeProvider.when('/home', {
                         templateUrl : '/views/templates/home.html'
-                      }).when('/secure/test', {
+                      }).when('/test', {
                         templateUrl : '/views/templates/test.html'
+                      }).when('/quiz', {
+                        templateUrl : '/views/templates/quiz.html'
                       }).otherwise({
                         redirectTo: '/'
                       });
