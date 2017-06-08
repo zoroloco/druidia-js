@@ -5,7 +5,8 @@ var pathUtil           = require('path'),
     conf               = require(pathUtil.join(__dirname,'../config/conf.json')),
     securityController = require(pathUtil.join(__dirname,'../controllers/security.server.controller.js')),
     commonController   = require(pathUtil.join(__dirname,'../controllers/common.server.controller.js')),
-    errorController    = require(pathUtil.join(__dirname,'../controllers/error.server.controller.js'));
+    errorController    = require(pathUtil.join(__dirname,'../controllers/error.server.controller.js')),
+    fs                 = require('fs');
 
 module.exports = function(app) {
   //order important here.
@@ -18,6 +19,16 @@ module.exports = function(app) {
   app.get('/',function(req,res,next){
     log.info("Sending index to client.");
     res.sendFile(pathUtil.join(__dirname,'../../app-web/public/views/index.html'));
+  })
+
+//https://blog.sohelrana.me/download-print-pdf-file-angularjs/
+  app.get('/testPdf',function(req,res,next){
+    log.info("sending down a test pdf file");
+
+    var pdfFile    = fs.readFileSync(pathUtil.join(__dirname,'../resources/test.pdf'));
+    var encodedPdf = new Buffer(pdfFile).toString('base64');
+    var j = {"pdf":encodedPdf};
+    res.json(j);
   })
 
   /*

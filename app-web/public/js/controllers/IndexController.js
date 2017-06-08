@@ -1,6 +1,6 @@
-angular.module('index-module', ['ngMaterial']).
-  controller('IndexController',['$log','$location','$window', '$rootScope',
-             'CommonService',function($log,$location,$window,$rootScope,commonService) {
+angular.module('index-module', ['ngMaterial','base64']).
+  controller('IndexController',['$base64','$http','$scope','$log','$location','$window', '$rootScope',
+             'CommonService',function($base64,$http,$scope,$log,$location,$window,$rootScope,commonService) {
 
     var self = this;
     $rootScope.question2="Question 2:";
@@ -9,6 +9,9 @@ angular.module('index-module', ['ngMaterial']).
 
     self.init = function(){
       $log.log("Init of index controller.");
+
+      //load the default template
+      //$window.location.href = '/home';
       //self.fetchUser();
     }
 
@@ -29,5 +32,29 @@ angular.module('index-module', ['ngMaterial']).
         }
       });
     }
+
+    $scope.printPdf = function (uuid){
+            $http({
+                url : 'https://localhost/testPdf',
+                method : 'GET',
+                headers : {
+                    'Content-type' : 'application/json'
+                },
+                responseType : 'json'
+            }).then(function(data, status, headers, config) {
+
+                var pdfFile = new Blob([ data.data.pdf ], {
+                    type : 'application/pdf'
+                });
+
+                //var dataObj =
+
+                $log.log("encoded pdf file:"+data.data.pdf);
+                //var decodedPdf = $base64.decode(data.data.pdf);
+                var pdfUrl = URL.createObjectURL(pdfFile);
+                var printwWindow = $window.open(pdfUrl);
+                printwWindow.print();
+            });
+        };
 
   }]);
